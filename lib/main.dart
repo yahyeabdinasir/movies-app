@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/provider/listmoviewprovider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) {
+        return Listmoviewprovider();
+      },
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.greenAccent)),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.white24)),
       home: Home(title: "Movies"),
     );
   }
@@ -29,43 +38,31 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  final MoviesName = [
-  "The MatrixWrite a function to reverse the string in place" ,
-  "InceptionFind the first non-repeated character in the string "
-  "The Social NetworkCount the total number of vowels and consonants in the title." ,
-  "The Imitation GameCheck if the title is an anagram of another scrambled string" ,
-  "Source CodeRemove all duplicate characters from the string",
-   "HackersDetermine if the string is a palindrome",
-  "TronGenerate all possible permutations of the characters in the title" ,
-  "Ex MachinaFind the maximum occurring character in the string",
-  "WarGamesCount how many words are in the string",
-  ];
   @override
   Widget build(BuildContext context) {
+    final MoviesName = Provider.of<Listmoviewprovider>(context).LoadTheNames();
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
+      // body: Padding(
+      //   padding: const EdgeInsets.all(10.0),
+      body: Center(
+        // color: Theme.of(context).colorScheme.onInverseSurface,
+        // margin: EdgeInsets.all(10),
+        child: ListView.builder(
+          itemCount: MoviesName.length,
 
-        child: Card(
-          color: Theme.of(context).colorScheme.onInverseSurface,
-          margin: EdgeInsets.all(10),
-          child: Center(
-            child: ListView.builder(
-              itemCount: MoviesName.length,
+          itemBuilder: (context, index) {
+            // return Card(child: Text(MoviesName[index]));
 
-              itemBuilder: (context,  index) {
-
-              return Text("${MoviesName[index]}");
-            },
-
-            ),
-          ),
+            return ListTile(
+              title: Text(MoviesName[index]),
+              leading: CircleAvatar(child: Text(MoviesName[index][0])),
+            );
+          },
         ),
       ),
     );
