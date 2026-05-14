@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:movies_app/models%20/moiesModel.dart';
 import 'package:movies_app/service/movieparser.dart';
 
@@ -20,6 +21,9 @@ class Listmoviewprovider extends ChangeNotifier {
   Future<void> accessinjsonData(BuildContext context) async {
     try {
     final   accessingJsonString = await DefaultAssetBundle.of(context).loadString('assets/data/films.json');
+    // if (kDebugMode) {
+    //   print('this is loaded file data ${accessingJsonString.length }');
+    // }
 
      final movies = MovieParser.parse(accessingJsonString);
 
