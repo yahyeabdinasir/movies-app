@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/models%20/moiesModel.dart';
 
-// class Deatails extends StatefulWidget {
-//   const Deatails({super.key, required this.movie});
-//    final Movie  movie ;
-//
-//   @override
-//   State<Deatails> createState() => _DeatailsState();
-// }
-//
-// class _DeatailsState extends State<Deatails> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return  Scaffold(
-//
-//       appBar: AppBar(
-//         title: Text(),
-//       ),
-//
-//     );
-//   }
-// // }
-//
-
+//  al ways make sure to use the stateles widget when we are passing  and accessing data from the parent widget pulling data
 class Deatails extends StatelessWidget {
   const Deatails({super.key, required this.movie});
 
