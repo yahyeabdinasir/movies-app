@@ -1,13 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:movies_app/models%20/moiesModel.dart';
 import 'package:movies_app/screen/Deatails.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({
-    super.key,
-    required this.movie,
-  });
+  const MovieCard({super.key, required this.movie});
 
   final Movie movie;
 
@@ -25,13 +21,16 @@ class MovieCard extends StatelessWidget {
 
         // leading: CircleAvatar(child: Text(movie.title[0])),
         leading: CircleAvatar(
+
           child: Image.network(
+
             movie.images[0],
             height: 50,
             width: 50,
             fit: BoxFit.cover,
           ),
         ),
+
         children: <Widget>[
           Container(
             alignment: Alignment.center,
@@ -64,11 +63,17 @@ class MovieCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                TextButton(onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Deatails(movie: movie,))
-                  );
-
-                }, child: Text(" Click More ")),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Deatails(movie: movie),
+                      ),
+                    );
+                  },
+                  child: Text(" Click More "),
+                ),
               ],
             ),
           ),
@@ -77,3 +82,67 @@ class MovieCard extends StatelessWidget {
     );
   }
 }
+
+//
+//
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MyHomePage(),
+//     );
+//   }
+// }
+//
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+//
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _selectedIndex = 0;
+//
+//   // This list stores the screens for each tab
+//   final List<Widget> _screens = [
+//     Center(child: Text('Home Screen')),
+//     Center(child: Text('Search Screen')),
+//     Center(child: Text('Profile Screen')),
+//   ];
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('BottomNavigationBar Example'),
+//       ),
+//       body: _screens[_selectedIndex], // Show the selected screen
+//       bottomNavigationBar: BottomNavigationBar(
+//         currentIndex: _selectedIndex, // Highlight the selected tab
+//         onTap: (index) {
+//           setState(() {
+//             _selectedIndex = index; // Update selected index
+//           });
+//         },
+//         items: [
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.home),
+//             label: 'Home',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.search),
+//             label: 'Search',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.person),
+//             label: 'Profile',
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
